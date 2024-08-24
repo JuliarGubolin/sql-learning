@@ -1,6 +1,6 @@
 # LEARNING AND REVIEWING :books:
 
-As a Data Science student, my first goal is to understand SQL completely. To fulfill this goal, I am reading SQL books. The first one is *"Learning SQL: Master SQL Fundamentals"*. I already know most of the contents, but it's important to reinforme some comands and aspects of the language.
+As a Data Science student, my first goal is to understand SQL completely. To achieve this, I am reading SQL books. The first one is *"Learning SQL: Master SQL Fundamentals"*. I already know most of the content, but it's important to reinforme some commands, clauses and statements in the language.
 
 I am gonna write below the most interesting and useful aspects of each chapter and, whenever I feel inspired, I am going to create something to practice the new knowledge.
 
@@ -14,7 +14,7 @@ Since the book does not include exercises to practice, I download a ready to use
 
 Three year ago, at my first graduation, the `SELECT` command was the first command I learned during the subject "Databases I". Therefore, this module was easy and familiar for me. Despite that, there were some topicts I've never heard about, such as text concatenation. This topic is about how you can concatenate informations from diferent colums into one and show them in an expecific way for your user. Let's see an example:
 
-If I want to concatenate 2 colums: *city* and *state* from a table called *Users* to show it as an address, for example, I could use the symbol bar "|":
+If I want to concatenate 2 colums: `CITY` and `STATE` from a table called `USERS` to show it as an address, for example, I could use the symbol bar "|":
 
 `SELECT NAME, CITY || ',' || STATE AS LOCATION FROM USERS`
 
@@ -26,7 +26,7 @@ For this chapter, the author used the database *Weather_Stations*.
 
 For this chapter, the author used the database *Rexon_Metals*.
 
-This chapter is full of useful comands and symbols. The most intersting for me was the '%' and '_', linked with the expression *LIKE* string by characters to filter. For example: if I just want the report codes from the column *report_code* of the *station_data table* that starts with 'A' followed by any character.
+This chapter is full of useful comands and symbols. The most intersting for me was the '%' and '_', linked with the expression `LIKE` string by characters to filter. For example: if I just want the report codes from the column `report_code` of the table `station_data` that starts with 'A' followed by any character.
 
 `SELECT * FROM STATION_DATA  WHERE REPORT_code like 'A%'`
 
@@ -76,9 +76,9 @@ From this question, I learned the importance of follow the SQL commands in the c
 
 For this chapter, the author used the database *Weather_Stations*.
 
-Since I have a good knowledge of programming, learn about this topic was easier. CASE instruction can filter information, just like `where` command does, but it allow us to be more specific and  make more complex queries. 
+Since I have a good knowledge of programming, learn about this topic was easier. CASE statement can filter information, just like `WHERE` command does, but it allow us to be more specific and  make more complex queries. 
 
-The most interesting topic about this chapter was "Case Zero/Null", which shows that we can put a whole CASE statement inside an agregated function:
+The most interesting topic about this chapter was "Case Zero/Null", which shows that we can put a whole `CASE` statement inside an agregated function:
 
 `SELECT month,
 AVG(CASE WHEN (RAIN OR HAIL) THEN temperature ELSE 0 END) as avg_precipitation_temp,
@@ -89,4 +89,14 @@ GROUP BY month`
 
 In the query above, the aim is to get the average of temperature when it rains or hails and when it does not rain or hail after the year 2000.
 
-## Chapter 8: `JOIN` 
+## Chapter 8: `JOIN` CLAUSE
+
+This chapter explain **three types** of JOIN clause: INNER JOIN, LEFT JOIN and RIGHT (OUTER) JOIN. Let's start with INNER JOIN.
+
+### 1. `INNER JOIN`
+
+INNER JOIN is used to return records that have commom columns in both tables. I found a good image to explain visually on [W3Schools website](https://www.w3schools.com/sql/sql_join.asp).
+
+![INNER JOIN FROM W3SCHOOLS](image-1.png)
+
+This type is used with `FROM` statement and just returns records that exists in both tables.
