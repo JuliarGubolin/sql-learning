@@ -91,12 +91,21 @@ In the query above, the aim is to get the average of temperature when it rains o
 
 ## Chapter 8: `JOIN` CLAUSE
 
-This chapter explain **three types** of JOIN clause: INNER JOIN, LEFT JOIN and RIGHT (OUTER) JOIN. Let's start with INNER JOIN.
+This chapter explain **three types** of JOIN clause: INNER JOIN, LEFT JOIN and RIGHT (OUTER) JOIN. Let's start with INNER JOIN. The images illustrating the JOINS are from [W3Schools website](https://www.w3schools.com/sql/sql_join.asp).
 
 ### 1. `INNER JOIN`
 
-INNER JOIN is used to return records that have commom columns in both tables. I found a good image to explain visually on [W3Schools website](https://www.w3schools.com/sql/sql_join.asp).
+`INNER JOIN` is used to return records that have commom columns in both tables.
 
 ![INNER JOIN FROM W3SCHOOLS](image-1.png)
 
-This type is used with `FROM` statement and just returns records that exists in both tables.
+This type is used with `FROM` statement and just returns records that exists in both tables. In addiction: INNER JOIN does not allow null vales. So, if you want to see NULL values, you should use `LEFT JOIN`.
+
+### 2. `LEFT JOIN`
+
+`LEFT JOIN` is used to return all records from the left table and the records that mached records from the righ table. The author recommends to use always `LEFT JOIN` with the table with "all records" on the LEFT of the clause because `RIGHT JOIN` is barely used and must be avoided.
+
+### 3. `RIGHT JOIN` and `OUTER JOIN`
+
+Both clauses are barely used and SQLite does not support them. Because of that, the book does not show examples of this two clauses.
+
