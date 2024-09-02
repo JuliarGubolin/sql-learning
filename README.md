@@ -4,11 +4,11 @@ As a Data Science student, my first goal is to understand SQL completely. To ach
 
 I am gonna write below the most interesting and useful aspects of each chapter and, whenever I feel inspired, I am going to create something to practice the new knowledge.
 
-<img src="BOOK.jpg" alt="image" width="50%" height="auto">
+<img src="Readme_Images/BOOK.jpg" alt="image" width="50%" height="auto">
 
-Since the book does not include exercises to practice, I download a ready to use database from [SQLite Tutorial](https://www.sqlitetutorial.net/sqlite-sample-database/). I named as "Artist_Employee", but the original name is "Chinook".
+Since the book does not include exercises to practice, I download a ready to use database from [SQLite Tutorial](https://www.sqlitetutorial.net/sqlite-sample-database/). I named as "Artist_Employee", but the original name is "Chinook". The SQL file containing the questions and answers is in the folder "Artists_Employee" above.
 
-![alt text](sqlite-sample-database-color.jpg)
+![alt text](Readme_Images/sqlite-sample-database-color.jpg)
 
 ## Chapter 4: `SELECT` COMMAND
 
@@ -40,7 +40,7 @@ This chapter has a lot of usefull information that I have never learned before a
 
 Even though there are a lot of information, I am going to start by the command `ORDER BY`, because this one was the command I struggled to undertand. It's used to order a set in ascending or decending order (for this last one, you will need to use `DESC` after the column name).
 
-Using the database "Chinook" from SQLite website, I tried to create questions to answer myself. I am going to write it below, followed by my answer.
+Using the database "Chinook" from SQLite website, I tried to create questions to answer myself. I am going to write it below, followed by my answer. (More questions in the file)
 
 1.  Is *Purchased AAC media* more used in *Pop* or *Drama* genre?
 
@@ -68,9 +68,9 @@ As you can see, I needed to learn more contents than I had been leaning until no
 
 Result table:
 
-![alt text](image.png)
+![alt text](Readme_Images/image.png)
 
-From this question, I learned the importance of follow the SQL commands in the correct sequence.
+From this question, I learned the importance of follow the SQL commands in the correct sequen
 
 ## Chapter 7: `CASE` STATEMENTS
 
@@ -97,15 +97,66 @@ This chapter explain **three types** of JOIN clause: INNER JOIN, LEFT JOIN and R
 
 `INNER JOIN` is used to return records that have commom columns in both tables.
 
-![INNER JOIN FROM W3SCHOOLS](image-1.png)
+![INNER JOIN FROM W3SCHOOLS](Readme_Images/image-1.png)
 
-This type is used with `FROM` statement and just returns records that exists in both tables. In addiction: INNER JOIN does not allow null vales. So, if you want to see NULL values, you should use `LEFT JOIN`.
+This type is used with `FROM` statement and just returns records that exists in both tables. In addiction: INNER JOIN does not allow null vales. So, if you want to see NULL values you should use `LEFT JOIN`.
+
+EXAMPLE: shows all customers and your invoices. This two tables are related by the field `CustomerId`.
+
+`SELECT`
+`CUSTOMERS.CustomerId,`
+`FirstName AS CUSTOMER_NAME,`
+`InvoiceId AS ID_ORDER,`
+`Total,`
+`InvoiceDate AS INITIAL_DATE,`
+`COUNT(*) as NUMBER_ORDERS`
+`FROM CUSTOMERS INNER JOIN INVOICES ON CUSTOMERS.CustomerId = INVOICES.CustomerId`
+`GROUP BY CUSTOMERS.CustomerId;`
 
 ### 2. `LEFT JOIN`
 
-`LEFT JOIN` is used to return all records from the left table and the records that mached records from the righ table. The author recommends to use always `LEFT JOIN` with the table with "all records" on the LEFT of the clause because `RIGHT JOIN` is barely used and must be avoided.
+`LEFT JOIN` is used to return all records from the left table and the records that mached records from the right table. The author recommends to use always `LEFT JOIN` with the table with "all records" on the LEFT of the clause because `RIGHT JOIN` is barely used and must be avoided.
 
 ### 3. `RIGHT JOIN` and `OUTER JOIN`
 
 Both clauses are barely used and SQLite does not support them. Because of that, the book does not show examples of this two clauses.
 
+## Chapter 9: DATABASE DESIGN
+
+Throught this chapter, we are going to build our own database, rather than just manipulating data using queries. The author's suggested tables are shown below:
+
+| COMPANY    | 
+| -------- | 
+| COMPANY_ID |                      
+| NAME | 
+| DESCRIPTION    | 
+| PRIMARY_CONTACT_ATENDEE_ID |
+
+| ROOM    | 
+| -------- | 
+| ROOM_ID | 
+| FLOOR_NUMBER | 
+| SEAT_CAPACITY    | 
+
+| ATENDEE    | 
+| -------- | 
+| ATENDEE_ID | 
+| FIRST_NAME | 
+| LAST_NAME   | 
+| PHONE |
+| EMAIL |
+| VIP |
+
+| PRESENTATION    | 
+| -------- | 
+| PRESENTAION_ID | 
+| BOOKED_COMPANY_ID | 
+| BOOKED_ROOM_ID   | 
+| START_TIME |
+| END_TIME |
+
+| PRESENTATION_ATTENDANCE    | 
+| -------- | 
+| TICKET_ID | 
+| PRESENTATION_ID | 
+| ATENDEE_ID    | 

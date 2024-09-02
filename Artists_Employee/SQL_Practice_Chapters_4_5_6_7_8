@@ -26,7 +26,40 @@ select invoices.InvoiceId,
     CASE 
         WHEN invoices.Total >= 9.50 THEN 'EXPENSIVE'
         WHEN invoices.Total BETWEEN 5.2 AND 9.49 THEN 'MODERATE'
-        ELSE 'CHEAP'
-    END as classification_invoice_price
+        ELSE 'CHEAP'    END as classification_invoice_price
 FROM invoices;
+
+-- JOIN CLAUSE
+-- 4. As the book example, I will try to use INNER JOIN to show all customers which have invoices and count all records each customer has:
+-- Answer: code
+
+SELECT
+CUSTOMERS.CustomerId, 
+FirstName AS CUSTOMER_NAME,
+InvoiceId AS ID_ORDER,
+Total,
+InvoiceDate AS INITIAL_DATE,
+COUNT(*) as NUMBER_ORDERS
+FROM CUSTOMERS INNER JOIN INVOICES ON CUSTOMERS.CustomerId = INVOICES.CustomerId
+GROUP BY CUSTOMERS.CustomerId;
+
+-- 5. As the book example, I will try to use INNER JOIN to show all invoice_items which have tracks:
+-- Answer: code
+
+SELECT
+INVOICE_ITEMS.InvoiceId AS Invoice_Item_ID,
+UnitPrice,
+TrackId,
+NAME
+FROM INVOICE_ITEMS INNER JOIN TRACKS ON TRACKS.TrackId = INVOICE_ITEMS.TrackId;
+
+-- 5.1. INNER JOIN to show all invoice_items which have tracks AND the average price foi each item. (This ideia was not intesting in this database)
+-- Answer: code
+
+SELECT
+INVOICE_ITEMS.InvoiceId AS Invoice_Item_ID,
+AVG(invoice_items.UnitPrice) AS AVG_PRICE,
+NAME
+FROM INVOICE_ITEMS INNER JOIN TRACKS ON TRACKS.TrackId = INVOICE_ITEMS.TrackId
+GROUP BY Invoice_Item_ID;
 
