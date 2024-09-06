@@ -163,6 +163,6 @@ This database was created by the author to manage a fictional conference called 
 | PRESENTATION_ID | 
 | ATENDEE_ID    | 
 
-![Database Schema with the tables and associations](Readme_Images\Database_Schema.png)
+![Database Schema with the tables and associations](Readme_Images/Database_Schema.png)
 
 These tables and the database were created in SQLite using the interface, as the book taught. So now, the database browser has a database named **SurgeTech_Conference**.
