@@ -38,7 +38,7 @@ For this chapter, the author used the database *Weather_Stations*.
 
 This chapter has a lot of usefull information that I have never learned before and introduced more than 10 new commands, including aggregate functions and operators llike `DESC` and `DISTINCT`.
 
-Even though there are a lot of information, I am going to start by the command `ORDER BY`, because this one was the command I struggled to undertand. It's used to order a set in ascending or decending order (for this last one, you will need to use `DESC` after the column name).
+Even though there are a lot of information, I am going to start by the command `ORDER BY`, because this was the one I struggled to undertand. It's used to order a set in ascending or decending order (for this last one, you will need to use `DESC` after the column's name).
 
 Using the database "Chinook" from SQLite website, I tried to create questions to answer myself. I am going to write it below, followed by my answer. (More questions in the file)
 
@@ -123,7 +123,9 @@ Both clauses are barely used and SQLite does not support them. Because of that, 
 
 ## Chapter 9: DATABASE DESIGN
 
-Throught this chapter, we are going to build our own database, rather than just manipulating data using queries. The author's suggested tables are shown below:
+Throught this chapter, we are going to build our own database, rather than just manipulating data using queries.
+
+This database was created by the author to manage a fictional conference called **SurgeTech**. In this fictional scenario, you were tasked by the manager to build a database to handle the attendees, companies, rooms, presentations and attendancees of each presentation. The database schema (Made using [Miro](https://miro.com/app/dashboard/)) and he author's suggested tables are shown below:
 
 | COMPANY    | 
 | -------- | 
@@ -160,3 +162,7 @@ Throught this chapter, we are going to build our own database, rather than just 
 | TICKET_ID | 
 | PRESENTATION_ID | 
 | ATENDEE_ID    | 
+
+![Database Schema with the tables and associations](Readme_Images\Database_Schema.png)
+
+These tables and the database were created in SQLite using the interface, as the book taught. So now, the database browser has a database named **SurgeTech_Conference**.
