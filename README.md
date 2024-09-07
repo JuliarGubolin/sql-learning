@@ -1,12 +1,14 @@
 # LEARNING AND REVIEWING :books:
 
-As a Data Science student, my primary goal is to understand master SQL. To achieve this, I am reading SQL books, starting with *"Learning SQL: Master SQL Fundamentals"*. Althought I am already familiar with much of the content, I believe it's essential to reinforce some commands, clauses and statements in the language.
+As a Data Science student, my primary goal is to understand master SQL. To achieve this, I am reading SQL books, starting with *"Getting started with SQL"* by Thomas Nield (O'Reilly). Copyright 2016 Thomas Nield, 978-7-4919-3816-4. Althought I am already familiar with much of the content, I believe it's essential to reinforce some commands, clauses and statements in the language.
 
 Below, I will summarize the most interesting and useful aspects of each chapter. Additionally, whenever I feel inspired, I plan to create practical exercises to apply my new knowledge.
 
-<img src="Readme_Images/BOOK.jpg" alt="image" width="50%" height="auto">
+<img src="Readme_Images/BOOK.jpg" alt="image" width="30%" height="auto">
 
-Since the book does not include exercises to practice, I downloaded a ready to use database from [SQLite Tutorial](https://www.sqlitetutorial.net/sqlite-sample-database/). I named "Artist_Employee", but the original name is "Chinook". The SQL file containing the questions and answers is in the folder "Artists_Employee" above.
+## HOW DID I PRACTICE WHILE STUDYING
+
+Since the book does not include exercises to practice, I downloaded a ready to use database from [SQLite Tutorial](https://www.sqlitetutorial.net/sqlite-sample-database/). I named "Artist_Employee", but the original name is "Chinook". The SQL file containing the **questions** I created by myself and **answers** is in the folder "Artists_Employee" above.
 
 ![alt text](Readme_Images/sqlite-sample-database-artists_employee.jpg)
 
@@ -28,7 +30,7 @@ For this chapter, the author used the database *Rexon_Metals*.
 
 This chapter is full of useful comands and symbols. The most intersting for me was the '%' and '_', linked with the expression `LIKE` string by characters to filter. For example: if I just want the report codes from the column `report_code` of the table `station_data` that starts with 'A' followed by any character.
 
-`SELECT * FROM STATION_DATA  WHERE REPORT_code like 'A%'`
+`SELECT * FROM STATION_DATA  WHERE REPORT_CODE LIKE 'A%'`
 
 As you have been noticing, I like to manipulate strings.
 
@@ -127,46 +129,36 @@ Both clauses are barely used and SQLite does not support them. Because of that, 
 
 Throught this chapter, we are going to build our own database, rather than just manipulating data using queries.
 
-This database was created by the author to manage a fictional conference called **SurgeTech**. In this fictional scenario, you were tasked by the manager to build a database to handle the attendees, companies, rooms, presentations and attendancees of each presentation. The database schema (made using [Miro](https://miro.com/app/dashboard/) and exacly the same presented in the book) and the author's suggested tables are shown below:
-
-| COMPANY    | 
-| -------- | 
-| COMPANY_ID |                      
-| NAME | 
-| DESCRIPTION    | 
-| PRIMARY_CONTACT_ATENDEE_ID |
-
-| ROOM    | 
-| -------- | 
-| ROOM_ID | 
-| FLOOR_NUMBER | 
-| SEAT_CAPACITY    | 
-
-| ATENDEE    | 
-| -------- | 
-| ATENDEE_ID | 
-| FIRST_NAME | 
-| LAST_NAME   | 
-| PHONE |
-| EMAIL |
-| VIP |
-
-| PRESENTATION    | 
-| -------- | 
-| PRESENTAION_ID | 
-| BOOKED_COMPANY_ID | 
-| BOOKED_ROOM_ID   | 
-| START_TIME |
-| END_TIME |
-
-| PRESENTATION_ATTENDANCE    | 
-| -------- | 
-| TICKET_ID | 
-| PRESENTATION_ID | 
-| ATENDEE_ID    | 
+This database was created by the author to manage a fictional conference called **SurgeTech**. In this fictional scenario, you were tasked by the manager to build a database to handle the attendees, companies, rooms, presentations and attendancees of each presentation. The database schema (made using [Miro](https://miro.com/app/dashboard/) and exacly the same presented in the book) is shown below:
 
 **DATABASE SCHEMA**
 
 <img src="Readme_Images/Database_Schema.png" alt="image" width="60%" height="auto">
 
 These tables and the database were created in SQLite using the interface, as the book taught, but you can use the command `CREATE TABLE` if you want to. So now, the database browser has a database named **SurgeTech_Conference**.
+
+After create all the five tables, the book taught how o make associations and how to make foreign keys. So I made it using the instructions. Below, I copied the table used by the author to explain the foreign keys and primary keys and its associations.
+
+| FOREIGN KEY _CHILD TABLE_  | PRIMARY KEY _PARENT TABLE_ |
+| -------- | -------- |
+| PRESENTATION.BOOKED_ROOM_ID  | ROOM.ROOM_ID
+| PRESENTATION_ATTENDANCEE.PRESENTATION_ID | PRESENTATION.PRESENTATION_ID |
+| PRESENTATION_ATTENDANCEE.ATTENDEE_ID   | ATTENDEE.ATENDEE_ID |
+| COMPANY.PRIMARY_CONTATC_ATTENDEE_ID| ATTENDEE.ATTENDEE_ID|
+
+### CREATING VIEWS
+
+This chapter also shows how to create views. Views are a way to save a often used SQL Query to be easily acessed and executed. The query used to create the firts view is shown below:
+
+`SELECT`
+`COMPANY.NAME AS COMPANY_NAME,`
+`PRESENTATION_ID,`
+`ROOM.ROOM_ID AS ROOM_IDENTIFY`
+`FROM PRESENTATION INNER JOIN COMPANY ON COMPANY.COMPANY_ID = PRESENTATION.BOOKED_COMPANY_ID `
+`INNER JOIN ROOM ON PRESENTATION.BOOKED_ROOM_ID = ROOM.ROOM_ID`
+`GROUP BY PRESENTATION.PRESENTATION_ID`
+
+This query I made by myself using the instruction presented in the book: "Show presentation informations with the company's and room's informations".
+
+## Chapter 10: MANAGING DATA
+
