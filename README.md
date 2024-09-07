@@ -1,24 +1,24 @@
 # LEARNING AND REVIEWING :books:
 
-As a Data Science student, my first goal is to understand SQL completely. To achieve this, I am reading SQL books. The first one is *"Learning SQL: Master SQL Fundamentals"*. I already know most of the content, but it's important to reinforme some commands, clauses and statements in the language.
+As a Data Science student, my primary goal is to understand master SQL. To achieve this, I am reading SQL books, starting with *"Learning SQL: Master SQL Fundamentals"*. Althought I am already familiar with much of the content, I believe it's essential to reinforce some commands, clauses and statements in the language.
 
-I am gonna write below the most interesting and useful aspects of each chapter and, whenever I feel inspired, I am going to create something to practice the new knowledge.
+Below, I will summarize the most interesting and useful aspects of each chapter. Additionally, whenever I feel inspired, I plan to create practical exercises to apply my new knowledge.
 
 <img src="Readme_Images/BOOK.jpg" alt="image" width="50%" height="auto">
 
-Since the book does not include exercises to practice, I download a ready to use database from [SQLite Tutorial](https://www.sqlitetutorial.net/sqlite-sample-database/). I named as "Artist_Employee", but the original name is "Chinook". The SQL file containing the questions and answers is in the folder "Artists_Employee" above.
+Since the book does not include exercises to practice, I downloaded a ready to use database from [SQLite Tutorial](https://www.sqlitetutorial.net/sqlite-sample-database/). I named "Artist_Employee", but the original name is "Chinook". The SQL file containing the questions and answers is in the folder "Artists_Employee" above.
 
-![alt text](Readme_Images/sqlite-sample-database-color.jpg)
+![alt text](Readme_Images/sqlite-sample-database-artists_employee.jpg)
 
 ## Chapter 4: `SELECT` COMMAND
 
-Three year ago, at my first graduation, the `SELECT` command was the first command I learned during the subject "Databases I". Therefore, this module was easy and familiar for me. Despite that, there were some topicts I've never heard about, such as text concatenation. This topic is about how you can concatenate informations from diferent colums into one and show them in an expecific way for your user. Let's see an example:
+Three years ago, at my first graduation, the `SELECT` command was the first command I learned during the subject "Databases I". Therefore, this module was easier and familiar for me. Despite that, there were some topics I've never heard about, such as **text concatenation**. This topic is about how you can concatenate informations from diferent colums into one and show them in an expecific way for your user. Let's see an example:
 
-If I want to concatenate 2 colums: `CITY` and `STATE` from a table called `USERS` to show it as an address, for example, I could use the symbol bar "|":
+Let's pretend I want to concatenate 2 colums, `CITY` and `STATE`, from a table called `USERS` to show it as an address (`LOCATION`), for example, I could use the symbol bar "|":
 
 `SELECT NAME, CITY || ',' || STATE AS LOCATION FROM USERS`
 
-In the example above, this new column, which concatenates the two other columns will be named as "*location*", but won't be created as a real column in the table. It's just to present information.
+In the example above, this new column, which concatenates the two other columns, was named `LOCATION`, but it wasn't created as an actual column in the table. It's just to display information.
 
 For this chapter, the author used the database *Weather_Stations*.
 
@@ -48,10 +48,10 @@ Using the database "Chinook" from SQLite website, I tried to create questions to
 
 SQL Query used:
 
-`select genres.Name, COUNT(media_types.Name) AS Media_Purchased_AAC_Audio_File FROM genres, media_types 
-where media_types.Name='Purchased AAC audio file' 
-AND genres.Name IN ('Pop', 'Drama')
-GROUP BY genres.Name;`
+`select genres.Name, `
+`COUNT(media_types.Name) AS Media_Purchased_AAC_Audio_File FROM genres, media_types `
+`where media_types.Name='Purchased AAC audio file' AND genres.Name IN ('Pop', 'Drama')`
+`GROUP BY genres.Name;`
 
 As you can see, I needed to learn more contents than I had been leaning until now. But it was really helpful to see beyond the book's content.One important thing I learned from this exercise is that `COUNT()` only works if used with `GROUP BY`.
 
@@ -80,26 +80,26 @@ Since I have a good knowledge of programming, learn about this topic was easier.
 
 The most interesting topic about this chapter was "Case Zero/Null", which shows that we can put a whole `CASE` statement inside an agregated function:
 
-`SELECT month,
-AVG(CASE WHEN (RAIN OR HAIL) THEN temperature ELSE 0 END) as avg_precipitation_temp,
-AVG(CASE WHEN NOT (RAIN OR HAIL) THEN temperature ELSE 0 END) as non_avg_precipitation_temp
-FROM station_data
-WHERE year > 2000
-GROUP BY month`
+`SELECT month,`
+`AVG(CASE WHEN (RAIN OR HAIL) THEN temperature ELSE 0 END) as avg_precipitation_temp,`
+`AVG(CASE WHEN NOT (RAIN OR HAIL) THEN temperature ELSE 0 END) as non_avg_precipitation_temp`
+`FROM station_data`
+`WHERE year > 2000`
+`GROUP BY month`
 
 In the query above, the aim is to get the average of temperature when it rains or hails and when it does not rain or hail after the year 2000.
 
 ## Chapter 8: `JOIN` CLAUSE
 
-This chapter explain **three types** of JOIN clause: INNER JOIN, LEFT JOIN and RIGHT (OUTER) JOIN. Let's start with INNER JOIN. The images illustrating the JOINS are from [W3Schools website](https://www.w3schools.com/sql/sql_join.asp).
+This chapter explain **three types** of JOIN clause: `INNER JOIN`, `LEFT JOIN` and `RIGHT (OUTER) JOIN`. Let's start with `INNER JOIN`. The images illustrating the `JOINS` are from [W3Schools website](https://www.w3schools.com/sql/sql_join.asp).
 
 ### 1. `INNER JOIN`
 
 `INNER JOIN` is used to return records that have commom columns in both tables.
 
-![INNER JOIN FROM W3SCHOOLS](Readme_Images/image-1.png)
+![INNER JOIN FROM W3SCHOOLS](Readme_Images/Inner_Join.png)
 
-This type is used with `FROM` statement and just returns records that exists in both tables. In addiction: INNER JOIN does not allow null vales. So, if you want to see NULL values you should use `LEFT JOIN`.
+This type is used with `FROM` statement and just returns records that exists in both tables. In addiction: `INNER JOIN` does not allow null vales. So, if you want to see NULL values you should use `LEFT JOIN`.
 
 EXAMPLE: shows all customers and your invoices. This two tables are related by the field `CustomerId`.
 
@@ -117,6 +117,8 @@ EXAMPLE: shows all customers and your invoices. This two tables are related by t
 
 `LEFT JOIN` is used to return all records from the left table and the records that mached records from the right table. The author recommends to use always `LEFT JOIN` with the table with "all records" on the LEFT of the clause because `RIGHT JOIN` is barely used and must be avoided.
 
+![INNER JOIN FROM W3SCHOOLS](Readme_Images/Left_Join.png)
+
 ### 3. `RIGHT JOIN` and `OUTER JOIN`
 
 Both clauses are barely used and SQLite does not support them. Because of that, the book does not show examples of this two clauses.
@@ -125,7 +127,7 @@ Both clauses are barely used and SQLite does not support them. Because of that, 
 
 Throught this chapter, we are going to build our own database, rather than just manipulating data using queries.
 
-This database was created by the author to manage a fictional conference called **SurgeTech**. In this fictional scenario, you were tasked by the manager to build a database to handle the attendees, companies, rooms, presentations and attendancees of each presentation. The database schema (Made using [Miro](https://miro.com/app/dashboard/)) and he author's suggested tables are shown below:
+This database was created by the author to manage a fictional conference called **SurgeTech**. In this fictional scenario, you were tasked by the manager to build a database to handle the attendees, companies, rooms, presentations and attendancees of each presentation. The database schema (made using [Miro](https://miro.com/app/dashboard/) and exacly the same presented in the book) and the author's suggested tables are shown below:
 
 | COMPANY    | 
 | -------- | 
@@ -163,6 +165,8 @@ This database was created by the author to manage a fictional conference called 
 | PRESENTATION_ID | 
 | ATENDEE_ID    | 
 
-![Database Schema with the tables and associations](Readme_Images/Database_Schema.png)
+**DATABASE SCHEMA**
 
-These tables and the database were created in SQLite using the interface, as the book taught. So now, the database browser has a database named **SurgeTech_Conference**.
+<img src="Readme_Images/Database_Schema.png" alt="image" width="60%" height="auto">
+
+These tables and the database were created in SQLite using the interface, as the book taught, but you can use the command `CREATE TABLE` if you want to. So now, the database browser has a database named **SurgeTech_Conference**.
