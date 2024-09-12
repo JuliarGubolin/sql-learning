@@ -162,3 +162,12 @@ This query I made by myself using the instruction presented in the book: "Show p
 
 ## Chapter 10: MANAGING DATA
 
+This chapter explains the statements `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE TABLE`, `DROP TABLE` and how to `INSERT `and `UPDATE` multiple data.
+
+The examples in the book are pretty simple. The most interesting topic is about `TRUNCATE TABLE`, which is not supported in SQLite. This statement can delete all the rows in a table, but the `AUTO_INCREMENT` value will be reset to its start number.
+
+## Chapter 11: MOVING FORWARD
+
+This last chapter aswers teh question: "Whats comes next?", listing some books to follow along with SQL, Python, R and more about data science.
+
+I'm not going to write about the Appendix, but I'm studying about the statements commented. Very good book!
