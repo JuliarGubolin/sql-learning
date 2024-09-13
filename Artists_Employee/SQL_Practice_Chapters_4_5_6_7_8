@@ -63,3 +63,26 @@ NAME
 FROM INVOICE_ITEMS INNER JOIN TRACKS ON TRACKS.TrackId = INVOICE_ITEMS.TrackId
 GROUP BY Invoice_Item_ID;
 
+-- Since chapters 9 and 10 focus on the a database schema, I'm going to follow with more statements found on the Appendix A and Appendix B of the book
+
+-- 6. Can we manipulate the invoice date using date functions? Let's update some fields INVOICEDATE
+ 
+-- 6.1 Updating date time on field 49
+select * from INVOICES;
+
+UPDATE INVOICES SET InvoiceDate = '2024-09-12 21:15:00' WHERE InvoiceId = 49 ;
+
+-- 6.2 Comparing and presenting date time
+
+SELECT InvoiceId, InvoiceDate, Total
+FROM INVOICES 
+WHERE InvoiceDate > '2010-05-12' ;
+
+
+-- 6.2 Increasing the power of the last query to group by date ordering by InvoiceDate
+SELECT InvoiceId, InvoiceDate, Total,
+COUNT(InvoiceDate) as DATES
+FROM INVOICES 
+WHERE InvoiceDate > '2010-05-12' 
+GROUP BY InvoiceDate
+ORDER BY InvoiceDate DESC;
